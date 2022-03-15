@@ -40,7 +40,7 @@ public class ThirdPersonController : MonoBehaviour
     private void OnDisable()
     {
         playerActionsAsset.Player.Jump.started -= DoJump;
-        playerActionsAsset.Player.Disable();
+        //playerActionsAsset.Player.Disable();
     }
 
     private void FixedUpdate()
@@ -97,7 +97,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
+        Ray ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
             return true;
         else
