@@ -1,8 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerClass : MonoBehaviour
 {
@@ -16,11 +15,7 @@ public class PlayerClass : MonoBehaviour
     public static bool isRunning;
     public static float playerNoise;
     public float speed;
-<<<<<<< Updated upstream
-=======
-    private static float scavengeTime = 2.0f;
-    public static List<GearItem> tempInv = new List<GearItem>();
->>>>>>> Stashed changes
+    private float scavengeTime = 2.0f;
     
     public PlayerClass(string name)
     {
@@ -41,7 +36,7 @@ public class PlayerClass : MonoBehaviour
         playerNoise = 10;
         // Her ska være mechanics for menneske-gang
         // der kan eg. være lyd-straf for at gå dårligt
-
+        
     }
 
     public void sneak()
@@ -51,23 +46,13 @@ public class PlayerClass : MonoBehaviour
         speed = 1;
     }
 
-<<<<<<< Updated upstream
-    void scavenge()
+    public IEnumerator scavenge() //brug StartCoroutine() til at kalde scavenge()
     {
-        //void erstattes med Item-class.
         //Returner en item genereret item class
-        
-=======
-    public static void scavenge() //brug StartCoroutine() til at kalde scavenge()
-    {
+        yield return new WaitForSeconds(scavengeTime);
+        print("SCAVENGING");
         //generate new item og append til inventory
-        tempInv.Add(ScriptableObject.CreateInstance<GearItem>());
-        
-        print(tempInv);
-        print(tempInv.Count);
->>>>>>> Stashed changes
         
     }
-
-
+    
 }
