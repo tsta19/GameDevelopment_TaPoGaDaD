@@ -36,7 +36,7 @@ public class PlayerClass : MonoBehaviour
         playerNoise = 10;
         // Her ska være mechanics for menneske-gang
         // der kan eg. være lyd-straf for at gå dårligt
-
+        
     }
 
     public void sneak()
