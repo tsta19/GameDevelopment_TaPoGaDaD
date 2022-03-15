@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class ThirdPersonController : MonoBehaviour
 {
     //input fields
-    private ThirdPersonAction playerActionsAsset;
+    public static ThirdPersonAction playerActionsAsset;
     private InputAction move;
 
     //movement fields
@@ -89,10 +89,9 @@ public class ThirdPersonController : MonoBehaviour
 
     private void DoJump(InputAction.CallbackContext obj)
     {
-        if(IsGrounded())
-        {
-            forceDirection += Vector3.up * jumpForce;
-        }
+        
+        forceDirection += Vector3.up * jumpForce;
+        
     }
 
     private bool IsGrounded()
