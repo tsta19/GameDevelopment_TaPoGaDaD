@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +14,6 @@ public class PlayerClass : MonoBehaviour
     public static bool isRunning;
     public static float playerNoise;
     public float speed;
-    private float scavengeTime = 2.0f;
     
     public PlayerClass(string name)
     {
@@ -36,7 +34,7 @@ public class PlayerClass : MonoBehaviour
         playerNoise = 10;
         // Her ska være mechanics for menneske-gang
         // der kan eg. være lyd-straf for at gå dårligt
-        
+
     }
 
     public void sneak()
@@ -46,13 +44,13 @@ public class PlayerClass : MonoBehaviour
         speed = 1;
     }
 
-    public IEnumerator scavenge() //brug StartCoroutine() til at kalde scavenge()
+    void scavenge()
     {
+        //void erstattes med Item-class.
         //Returner en item genereret item class
-        yield return new WaitForSeconds(scavengeTime);
-        print("SCAVENGING");
-        //generate new item og append til inventory
+        
         
     }
-    
+
+
 }
