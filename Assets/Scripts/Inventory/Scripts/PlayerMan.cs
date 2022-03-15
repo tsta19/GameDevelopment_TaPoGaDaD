@@ -8,8 +8,8 @@ public class PlayerMan : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        print("hej");
         var item = other.GetComponent<Item>();
+        print("item" + item);
         if (item)
         {
             inventory.AddItem(item.item, 1);
