@@ -15,7 +15,7 @@ public class PlayerClass : MonoBehaviour
     public static bool isRunning;
     public static float playerNoise;
     public float speed;
-    private float scavengeTime = 2.0f;
+    public static float scavengeTime = 2.0f;
     
     public PlayerClass(string name)
     {
@@ -46,10 +46,9 @@ public class PlayerClass : MonoBehaviour
         speed = 1;
     }
 
-    public IEnumerator scavenge() //brug StartCoroutine() til at kalde scavenge()
+    public static void scavenge() //brug StartCoroutine() til at kalde scavenge()
     {
         //Returner en item genereret item class
-        yield return new WaitForSeconds(scavengeTime);
         print("SCAVENGING");
         //generate new item og append til inventory
         
