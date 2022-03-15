@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerClass : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class PlayerClass : MonoBehaviour
     public static bool isRunning;
     public static float playerNoise;
     public float speed;
+<<<<<<< Updated upstream
+=======
+    private static float scavengeTime = 2.0f;
+    public static List<GearItem> tempInv = new List<GearItem>();
+>>>>>>> Stashed changes
     
     public PlayerClass(string name)
     {
@@ -44,11 +51,21 @@ public class PlayerClass : MonoBehaviour
         speed = 1;
     }
 
+<<<<<<< Updated upstream
     void scavenge()
     {
         //void erstattes med Item-class.
         //Returner en item genereret item class
         
+=======
+    public static void scavenge() //brug StartCoroutine() til at kalde scavenge()
+    {
+        //generate new item og append til inventory
+        tempInv.Add(ScriptableObject.CreateInstance<GearItem>());
+        
+        print(tempInv);
+        print(tempInv.Count);
+>>>>>>> Stashed changes
         
     }
 
