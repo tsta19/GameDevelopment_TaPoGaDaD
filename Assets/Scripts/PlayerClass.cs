@@ -16,6 +16,11 @@ public class PlayerClass : MonoBehaviour
     public static float playerNoise;
     public float speed;
     public static float scavengeTime = 2.0f;
+    public InventoryScript inventory;
+    
+    public float scavengeTimer = 0;
+    public bool scavengeTimerBool;
+    
     
     public PlayerClass(string name)
     {
@@ -45,13 +50,63 @@ public class PlayerClass : MonoBehaviour
         playerNoise = 3;
         speed = 1;
     }
-
-    public static void scavenge() //brug StartCoroutine() til at kalde scavenge()
+    
+    public void scavenge(GameObject colliderO) //brug StartCoroutine() til at kalde scavenge()
     {
-        //Returner en item genereret item class
-        print("SCAVENGING");
-        //generate new item og append til inventory
+      
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("ScavengeO"))
+        {
+            
+            if (ThirdPersonController.playerActionsAsset.Player.Scavenge.triggered)
+            {
+                print("other" + other);
+                scavengeTimerBool = true;
+                print("Scavenging");
+                
+            }
+              
+            if (scavengeTimerBool)
+            {
+                scavengeTimer += Time.deltaTime;
+                print("timer: " + scavengeTimer);
+                if (scavengeTimer >= scavengeTime)
+                {
+                    //Returner en item genereret item class
+                    print("SCAVENGING");
+                    //generate new item og append til inventory
+                    var item = other.GetComponent<Item>();
+                    print(item);
+                    if (item)
+                    {
+                        inventory.AddItem(item.item, 1);
+                        print("Successfully scavenged");
+                        print(inventory);
+                    }
+               
+                    scavengeTimer = 0;
+                    scavengeTimerBool = false;
+                }
+            }
+        }
+
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("ScavengeO"))
+        {
+            if (scavengeTimerBool)
+            {
+                print("Scavenging interrupted");
+            }
+            scavengeTimerBool = false;
+            scavengeTimer = 0;
+        }
+       
+        
         
     }
-    
 }
