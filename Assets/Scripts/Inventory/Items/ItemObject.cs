@@ -4,14 +4,14 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Gears,
-    Clothes,
-    Boosters
+    robotpart,
+    Default
 }
-public abstract class ItemClass : ScriptableObject
+public abstract class ItemObject : ScriptableObject
 {
     public GameObject prefab;
     public ItemType type;
-    [TextArea(15, 20)] public string description;
-    
+    [TextArea(15, 20)]
+    public string description;
+
 }
