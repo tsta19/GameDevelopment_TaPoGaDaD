@@ -40,7 +40,7 @@ public class FieldOfView : MonoBehaviour
 
     }
 
-    private void FieldOfViewCheck()
+    public bool FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
@@ -65,7 +65,10 @@ public class FieldOfView : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
-    }
+
+        return canSeePlayer;
+    } 
+    
 
     // Update is called once per frame
     void Update()

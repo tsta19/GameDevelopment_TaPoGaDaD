@@ -18,10 +18,11 @@ public class AIBehaviour : MonoBehaviour
     private float timer;
 
     public Vector3 newDestination;
-    
+
+    private FieldOfView FOVagent;
     // AI Properties
     private float _lineOfSight = 15;
-    private float _playerSuspicion = 50;
+    private float _playerSuspicion = 101;
     private float _suspicionThreshold = 100;
     private bool _playerDetected = false;
     
@@ -44,6 +45,7 @@ public class AIBehaviour : MonoBehaviour
     void OnEnable () {
         agent = GetComponent<NavMeshAgent> ();
         timer = wanderTimer;
+        FOVagent = GetComponent<FieldOfView>();
     }
  
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class AIBehaviour : MonoBehaviour
         timer += Time.deltaTime;
         Behaviour();
         LineOfSightDetection();
+        FOVagent.FieldOfViewCheck();
     }
  
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
@@ -84,7 +87,7 @@ public class AIBehaviour : MonoBehaviour
                 {
                     Debug.Log("AI is Observing");
                     _isObserving = true;
-                    transform.forward = player.transform.position;
+                    //transform.forward = player.transform.position;
                 }
                 _isObserving = false;
                 break;
@@ -94,6 +97,7 @@ public class AIBehaviour : MonoBehaviour
                 {
                     Vector3 newPos = player.transform.position;
                     agent.SetDestination(newPos);
+                    print("Chasing 4 real now");
                 }
                 break;
             case AI_State.isSearching:
@@ -109,17 +113,21 @@ public class AIBehaviour : MonoBehaviour
     {
         float dist = Vector3.Distance(player.transform.position, transform.position);
 
-        if (dist < _lineOfSight)
+        if (dist < _lineOfSight && FOVagent.FieldOfViewCheck())
         {
             _playerDetected = true;
             ai_state = AI_State.isObserving;
-            Debug.Log("IN LOS");
+            //Debug.Log("IN LOS");
+            if (_playerSuspicion > _suspicionThreshold)
+            {
+                ai_state = AI_State.isChasing;
+            }
         }
         else
         {
             _playerDetected = false;
             ai_state = AI_State.isIdle;
-            Debug.Log("NOT IN LOS");
+            //Debug.Log("NOT IN LOS");
         }
     }
     
@@ -131,5 +139,15 @@ public class AIBehaviour : MonoBehaviour
         Gizmos.DrawSphere(newDestination, 0.5f);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _lineOfSight);
+
+        
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("Collision AI, Player");
+        }
     }
 }
