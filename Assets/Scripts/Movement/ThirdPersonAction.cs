@@ -62,6 +62,15 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sneak"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9a10c02-ac11-4639-9058-171c398d9687"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""action"": ""Scavenge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""410c0ad3-956d-43ca-bd21-fca019d14349"",
+                    ""path"": ""<Keyboard>/#(G)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sneak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Scavenge = m_Player.FindAction("Scavenge", throwIfNotFound: true);
+        m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Scavenge;
+    private readonly InputAction m_Player_Sneak;
     public struct PlayerActions
     {
         private @ThirdPersonAction m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Scavenge => m_Wrapper.m_Player_Scavenge;
+        public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                 @Scavenge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScavenge;
                 @Scavenge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScavenge;
                 @Scavenge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScavenge;
+                @Sneak.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
+                @Sneak.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
+                @Sneak.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                 @Scavenge.started += instance.OnScavenge;
                 @Scavenge.performed += instance.OnScavenge;
                 @Scavenge.canceled += instance.OnScavenge;
+                @Sneak.started += instance.OnSneak;
+                @Sneak.performed += instance.OnSneak;
+                @Sneak.canceled += instance.OnSneak;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnScavenge(InputAction.CallbackContext context);
+        void OnSneak(InputAction.CallbackContext context);
     }
 }

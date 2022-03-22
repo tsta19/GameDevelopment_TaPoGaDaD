@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c89d805df176945b020c4285dee8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: d87edf20dda02cb489a5e7f79c080569, type: 2}
+  item1: {fileID: 11400000, guid: 4928db908bed4cb4592af57268b3829d, type: 2}
 --- !u!65 &270779306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1331,6 +1331,7 @@ GameObject:
   - component: {fileID: 1024826113}
   - component: {fileID: 1024826112}
   - component: {fileID: 1024826111}
+  - component: {fileID: 1024826114}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1403,6 +1404,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 24.313, y: -169.002, z: 4.575}
+--- !u!114 &1024826114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024826110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4112fa25803df4ba05e23390a67d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 271399210}
+  camTransform: {fileID: 1024826113}
+  Offset: {x: 10, y: 10, z: 10}
+  SmoothTime: 0.3
 --- !u!1 &1102909182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,8 +2342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   inventory: {fileID: 11400000, guid: 465bdad7023b78c4ba93c46e138a4740, type: 2}
-  scavengeTimer: 2
+  scavengeTimer: 0
   scavengeTimerBool: 0
+  controller: {fileID: 1672210269}
 --- !u!114 &1672210269
 MonoBehaviour:
   m_ObjectHideFlags: 0

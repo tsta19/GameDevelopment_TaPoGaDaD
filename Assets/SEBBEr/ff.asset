@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
-  m_Name: Gear
+  m_Name: ff
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1069516041891308586, guid: 870cee98c4a1dfa4ca52af509ebb0a93, type: 3}
+  prefab: {fileID: 0}
   type: 0
-  description: cock and balls
-  partValue: 10
+  description: 
+  partValue: 0

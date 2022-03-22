@@ -6,8 +6,7 @@ using UnityEngine;
 public class ScavengableObject : MonoBehaviour
 {
     
-    public ItemObject item;
-
-  
+    public ItemObject item1;
     
+
 }

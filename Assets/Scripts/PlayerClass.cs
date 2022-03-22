@@ -20,11 +20,12 @@ public class PlayerClass : MonoBehaviour
     
     public float scavengeTimer = 0;
     public bool scavengeTimerBool;
-    
-    
+
+    public ThirdPersonController controller;
     public PlayerClass(string name)
     {
         playerName = name;
+        controller = GetComponent<ThirdPersonController>();
     }
 
     public void run()
@@ -46,16 +47,19 @@ public class PlayerClass : MonoBehaviour
 
     public void sneak()
     {
+        controller.maxSpeed = 1;
         isSneaky = true;
         playerNoise = 3;
-        speed = 1;
-    }
-    
-    public void scavenge(GameObject colliderO) //brug StartCoroutine() til at kalde scavenge()
-    {
-      
+        print("SNEAKING");
+        
     }
 
+    public void normalState()
+    {
+        controller.maxSpeed = 5;
+        playerNoise = 10;
+    }
+    
     public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("ScavengeO"))
@@ -66,9 +70,8 @@ public class PlayerClass : MonoBehaviour
                 print("other" + other);
                 scavengeTimerBool = true;
                 print("Scavenging");
-                
+               
             }
-              
             if (scavengeTimerBool)
             {
                 scavengeTimer += Time.deltaTime;
@@ -78,11 +81,12 @@ public class PlayerClass : MonoBehaviour
                     //Returner en item genereret item class
                     print("SCAVENGING");
                     //generate new item og append til inventory
-                    var item = other.GetComponent<Item>();
-                    print(item);
-                    if (item)
+                    print("other" + other.name);
+                    var itemmm = other.GetComponent<ScavengableObject>();
+                    print(itemmm);
+                    if (itemmm)
                     {
-                        inventory.AddItem(item.item, 1);
+                        inventory.AddItem(itemmm.item1, 1);
                         print("Successfully scavenged");
                         print(inventory);
                     }
@@ -90,7 +94,8 @@ public class PlayerClass : MonoBehaviour
                     scavengeTimer = 0;
                     scavengeTimerBool = false;
                 }
-            }
+            }  
+            
         }
 
     }
@@ -108,5 +113,22 @@ public class PlayerClass : MonoBehaviour
        
         
         
+    }
+
+    public void Update()
+    {
+        // Check states
+        if (ThirdPersonController.playerActionsAsset.Player.Sneak.triggered)
+        {
+            if (isSneaky)
+            {
+                isSneaky = false;
+                normalState();
+            }
+            else if (!isSneaky)
+            {
+                sneak();
+            }
+        }
     }
 }
