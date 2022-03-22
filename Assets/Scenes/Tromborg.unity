@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 3a27179b0da8f1d4197311f7c0d20287, type: 2}
-  x_start: -70
+  x_start: -114
   y_start: 115
   x_space_between_item: 22
   number_of_column: 6
