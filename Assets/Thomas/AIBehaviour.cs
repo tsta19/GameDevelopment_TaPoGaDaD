@@ -21,7 +21,8 @@ public class AIBehaviour : MonoBehaviour
     
     // AI Properties
     private float _lineOfSight = 15;
-    private float _playerSuspicion = 0;
+    private float _playerSuspicion = 50;
+    private float _suspicionThreshold = 100;
     private bool _playerDetected = false;
     
     // AI States
@@ -48,7 +49,6 @@ public class AIBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update () {
         timer += Time.deltaTime;
-        
         Behaviour();
         LineOfSightDetection();
     }
@@ -68,9 +68,9 @@ public class AIBehaviour : MonoBehaviour
         switch (ai_state)
         {
             case AI_State.isIdle:
-                Debug.Log("AI is Idle");
                 if (!_playerDetected)
                 {
+                    Debug.Log("AI is Idle");
                     if (timer >= wanderTimer) {
                         Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
                         agent.SetDestination(newPos);
@@ -80,23 +80,27 @@ public class AIBehaviour : MonoBehaviour
                 }
                 break;
             case AI_State.isObserving:
-                Debug.Log("AI is Observing");
-                if (_playerDetected)
+                if (_playerDetected && _playerSuspicion < _suspicionThreshold)
                 {
+                    Debug.Log("AI is Observing");
                     _isObserving = true;
                     transform.forward = player.transform.position;
                 }
-
                 _isObserving = false;
                 break;
             case AI_State.isChasing:
                 Debug.Log("AI is Chasing");
+                if (_playerDetected && _playerSuspicion >= _suspicionThreshold)
+                {
+                    Vector3 newPos = player.transform.position;
+                    agent.SetDestination(newPos);
+                }
                 break;
             case AI_State.isSearching:
                 Debug.Log("AI is Searching");
                 break;
             default:
-                Debug.LogWarning("Something probably went");
+                Debug.LogWarning(this.GetType().Name + " Script Error: All states were missed (Line 103)");
                 break;
         }
     }
@@ -107,7 +111,6 @@ public class AIBehaviour : MonoBehaviour
 
         if (dist < _lineOfSight)
         {
-            
             _playerDetected = true;
             ai_state = AI_State.isObserving;
             Debug.Log("IN LOS");
