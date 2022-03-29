@@ -70,8 +70,6 @@ public class AIBehaviour : MonoBehaviour
         Behaviour();
         LineOfSightDetection();
 
-        FOVagent.FieldOfViewCheck();
-
 
         // Debug Input Actions
         if (ThirdPersonController.playerActionsAsset.Player.baslls.triggered)
@@ -181,12 +179,13 @@ public class AIBehaviour : MonoBehaviour
                 break;
         }
     }
-    public void IHeardSomething(Transform playerC)
+    public void IHeardSomething()
     {
+       
         print("I HEARD SOMETING");
         susSound = true;
-        suspicousPos = playerC.position;
-        ai_state = AI_State.isSearching;
+        suspicousPos = player.position;
+        ai_state = AI_State.isSearching; 
         
     }
     /*

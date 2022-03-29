@@ -13,7 +13,7 @@ public class PlayerClass : MonoBehaviour
     public static bool isHumanWalk;
     public static bool isSneaky;
     public static bool isRunning;
-    public float playerNoise = 10;
+    public float playerNoise = 15;
     public float speed;
     public static float scavengeTime = 2.0f;
     public InventoryScript inventory;
@@ -24,9 +24,8 @@ public class PlayerClass : MonoBehaviour
     public bool scavengeTimerBool;
 
     public ThirdPersonController controller;
+    //public Collider[] noiseColliders = new Collider[10];
     
-    
-    private Collider[] noiseColliders = new Collider[5];
     public PlayerClass(string name)
     {
         playerName = name;
@@ -132,29 +131,37 @@ public class PlayerClass : MonoBehaviour
 
     void checkNoiseSphere()
     {
-        int noiseSphere = Physics.OverlapSphereNonAlloc(transform.position, playerNoise, noiseColliders);
-        
-        if (noiseSphere > 0)
+        //int noiseSphere = Physics.OverlapSphereNonAlloc(transform.position, playerNoise, noiseColliders);
+        Collider[] noiseSphere = Physics.OverlapSphere(transform.position, playerNoise);
+        print("playernoise: " + playerNoise);
+        print(noiseSphere);
+        if (noiseSphere.Length > 0)
         {
             
-            for (int i = 0; i < noiseSphere; i++)
+            for (int i = 0; i < noiseSphere.Length; i++)
             {
-                float dist = Vector3.Distance(noiseColliders[i].transform.position, transform.position);
-                
-                if (dist <= playerNoise && noiseColliders[i].CompareTag("NPC"))
+                float dist = Vector3.Distance(noiseSphere[i].transform.position, transform.position);
+                print("dist: " + dist);
+                if (dist <= playerNoise && noiseSphere[i].CompareTag("NPC"))
                 {
-                    noiseColliders[i].SendMessage("IHeardSomething", transform.position);
+                    print("message sent");
+                    noiseSphere[i].SendMessage("IHeardSomething");
                 }
             }
             
         }
 
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, playerNoise);
+        
+    }
 
     public void Update()
     {
-        print("speeeeeed" + controller.maxSpeed);
+        
         // Check states
         if (ThirdPersonController.playerActionsAsset.Player.Sneak.triggered)
         {
@@ -171,13 +178,14 @@ public class PlayerClass : MonoBehaviour
         if (newItem)
         {
             updateWeight();
-            print("hejsa: " + invenWeight);
+            
             controller.maxSpeed /= invenWeight;
-            print("speed: " + controller.maxSpeed);
+            
             newItem = false;
         }
         
         checkNoiseSphere();
+       
 
     }
 }
