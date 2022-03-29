@@ -15,6 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 3265489944094483069, guid: 30ab6c2132ce8894da075407ce43cb23, type: 3}
   type: 0
   description: A small gear. I can use this to upgrade myself.
-  weight: 5
+  weight: 0.05
   noise: 5
   value: 20

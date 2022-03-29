@@ -14,4 +14,5 @@ public abstract class ItemObject : ScriptableObject
     [TextArea(15, 20)]
     public string description;
 
+    public abstract float getWeight();
 }

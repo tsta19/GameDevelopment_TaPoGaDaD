@@ -13,6 +13,7 @@ public class InventoryScript : ScriptableObject, ISerializationCallbackReceiver
     public List<InventorySlot> Container = new List<InventorySlot>();
     public int inventorySpace = 0;
     public int maxInven = 2;
+    public float weight = 0;
 
     private void OnEnable()
     {
@@ -75,6 +76,7 @@ public class InventoryScript : ScriptableObject, ISerializationCallbackReceiver
             file.Close();
         }
     }
+
 }
 
 [System.Serializable]
@@ -83,6 +85,7 @@ public class InventorySlot
     public int ID;
     public ItemObject item;
     public int amount;
+
     public InventorySlot(int _id, ItemObject _item, int _amount)
     {
         ID = _id;
@@ -92,5 +95,10 @@ public class InventorySlot
     public void AddAmount(int value)
     {
         amount += value;
+    }
+    
+    public float getWeight()
+    {
+        return item.getWeight();
     }
 }

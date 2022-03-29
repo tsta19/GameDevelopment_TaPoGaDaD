@@ -12,4 +12,9 @@ public class Robotpart : ItemObject
     {
         type = ItemType.robotpart;
     }
+
+    public override float getWeight()
+    {
+        return weight;
+    }
 }

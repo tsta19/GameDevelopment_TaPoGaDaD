@@ -17,6 +17,8 @@ public class PlayerClass : MonoBehaviour
     public float speed;
     public static float scavengeTime = 2.0f;
     public InventoryScript inventory;
+    public float invenWeight;
+    public bool newItem = false;
     
     public float scavengeTimer = 0;
     public bool scavengeTimerBool;
@@ -70,7 +72,7 @@ public class PlayerClass : MonoBehaviour
                 print("other" + other);
                 scavengeTimerBool = true;
                 print("Scavenging");
-               
+                
             }
             if (scavengeTimerBool)
             {
@@ -86,13 +88,16 @@ public class PlayerClass : MonoBehaviour
                     print(itemmm);
                     if (itemmm)
                     {
+                        
                         inventory.AddItem(itemmm.item1, 1);
                         print("Successfully scavenged");
                         print(inventory);
+                        
                     }
-               
+                    newItem = true;
                     scavengeTimer = 0;
                     scavengeTimerBool = false;
+                    
                 }
             }  
             
@@ -109,14 +114,22 @@ public class PlayerClass : MonoBehaviour
             }
             scavengeTimerBool = false;
             scavengeTimer = 0;
+        } 
+    }
+
+    // gets weight from item
+    public void updateWeight()
+    {
+        invenWeight = 1;
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            invenWeight = invenWeight + inventory.Container[i].getWeight();
         }
-       
-        
-        
     }
 
     public void Update()
     {
+        print("speeeeeed" + controller.maxSpeed);
         // Check states
         if (ThirdPersonController.playerActionsAsset.Player.Sneak.triggered)
         {
@@ -130,5 +143,14 @@ public class PlayerClass : MonoBehaviour
                 sneak();
             }
         }
+        if (newItem)
+        {
+            updateWeight();
+            print("hejsa: " + invenWeight);
+            controller.maxSpeed /= invenWeight;
+            print("speed: " + controller.maxSpeed);
+            newItem = false;
+        }
+
     }
 }
