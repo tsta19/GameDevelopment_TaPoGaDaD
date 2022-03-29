@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
   m_Name: Medium gear
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3523969426591612122, guid: c6e71b9e5e613324ba949d36817eac5e, type: 3}
+  prefab: {fileID: 7185148329371841843, guid: 057905b8320d6cd4c893f500089e0841, type: 3}
   type: 0
   description: A medium gear. I can use this to upgrade myself.
   weight: 0.1

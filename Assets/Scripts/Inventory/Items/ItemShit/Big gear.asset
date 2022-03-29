@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
   m_Name: Big gear
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2088778677216115890, guid: 2a538c84e2bc0894eba1fafb5cfb0544, type: 3}
+  prefab: {fileID: 4263980991319661712, guid: cb1873bd26c203c4ca99e5476a5bce55, type: 3}
   type: 0
   description: A big gear. I can use this to upgrade myself.
   weight: 0.2

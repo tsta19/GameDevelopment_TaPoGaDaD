@@ -11,9 +11,8 @@ public class InventoryScript : ScriptableObject, ISerializationCallbackReceiver
     public string savePath;
     private ItemDatabaseObject database;
     public List<InventorySlot> Container = new List<InventorySlot>();
-    public int inventorySpace = 0;
-    public int maxInven = 2;
-    public float weight = 0;
+    public static int inventorySpace = 0;
+    public static int maxInven = 10;
 
     private void OnEnable()
     {

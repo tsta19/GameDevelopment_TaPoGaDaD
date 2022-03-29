@@ -17,4 +17,14 @@ public class Robotpart : ItemObject
     {
         return weight;
     }
+
+    public override float getValue()
+    {
+        return value;
+    }
+
+    public override float getNoise()
+    {
+        return noise;
+    }
 }

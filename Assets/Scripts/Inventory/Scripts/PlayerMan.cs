@@ -21,7 +21,7 @@ public class PlayerMan : MonoBehaviour
 
     private void Start()
     {
-        loadInven();
+        //loadInven();
     }
 
     private void OnApplicationQuit()

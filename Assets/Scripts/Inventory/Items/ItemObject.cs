@@ -15,4 +15,6 @@ public abstract class ItemObject : ScriptableObject
     public string description;
 
     public abstract float getWeight();
+    public abstract float getValue();
+    public abstract float getNoise();
 }

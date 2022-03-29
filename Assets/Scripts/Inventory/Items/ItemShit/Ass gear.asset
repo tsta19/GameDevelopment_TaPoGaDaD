@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95858e37384ea8e4197471b371085361, type: 3}
-  m_Name: Inventory
+  m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
+  m_Name: Ass gear
   m_EditorClassIdentifier: 
-  savePath: /Inventory.save
-  Container: []
+  prefab: {fileID: 8770763732136459372, guid: 6c3a31d019eb86b4eb033c3479f8670b, type: 3}
+  type: 0
+  description: AAAAASs
+  weight: 1
+  noise: 1
+  value: 1
