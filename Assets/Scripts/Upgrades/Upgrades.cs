@@ -6,6 +6,8 @@ using UnityEngine;
 public class Upgrades : MonoBehaviour
 {
     public GameObject craftingBench;
+    public GameObject upgradeMenu; // Panel
+    public GameObject message; // Panel
 
     private bool canCraft;      // Is the player close enough to the bench? 
     [Range(0, 360)]
@@ -64,6 +66,10 @@ public class Upgrades : MonoBehaviour
     void ShowMessage()
     {
         Debug.Log("Press E to upgrade");
+        if (message != null)
+        {
+            message.SetActive(true);
+        }
     }
 
     void MakeUpgrade()
@@ -71,6 +77,11 @@ public class Upgrades : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("E key was pressed");
+            if(upgradeMenu != null)
+            {
+                upgradeMenu.SetActive(true);
+            }
+
         }
     }
 
