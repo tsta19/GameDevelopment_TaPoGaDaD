@@ -29,6 +29,9 @@ public class AIBehaviour : MonoBehaviour
     private float dangerZone = 5;
     private float _suspicionTimer = 5.0f;
 
+    private Vector3 suspicousPos;
+
+    private bool susSound = false;
     // AI States
     public AI_State ai_state;
 
@@ -40,6 +43,7 @@ public class AIBehaviour : MonoBehaviour
         isObserving,
         isChasing,
         isSearching
+        
     }
 
     // Booleans to determine what state the AI is currently in
@@ -165,13 +169,26 @@ public class AIBehaviour : MonoBehaviour
                 for x amount of seconds before moving back to the idle state.
             */
             case AI_State.isSearching:
+                if (susSound)
+                {
+                    Vector3 newPos1 = suspicousPos;
+                    agent.SetDestination(newPos1);
+                    susSound = false;
+                }
                 break;
             default:
                 Debug.LogWarning(this.GetType().Name + " Script Error: All states were missed (Default State Switch Case)");
                 break;
         }
     }
-    
+    public void IHeardSomething(Transform playerC)
+    {
+        print("I HEARD SOMETING");
+        susSound = true;
+        suspicousPos = playerC.position;
+        ai_state = AI_State.isSearching;
+        
+    }
     /*
         This is the function which first changes the AI state it checks to see whether the player is in the FOV radius.
         If the player is in FOV the player is detected and engages the observing state.
@@ -219,5 +236,7 @@ public class AIBehaviour : MonoBehaviour
         _suspicionTimer = 5.0f;
 
     }
+
+    
 }
     
