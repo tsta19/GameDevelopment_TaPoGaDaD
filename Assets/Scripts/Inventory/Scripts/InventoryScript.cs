@@ -11,6 +11,8 @@ public class InventoryScript : ScriptableObject, ISerializationCallbackReceiver
     public string savePath;
     private ItemDatabaseObject database;
     public List<InventorySlot> Container = new List<InventorySlot>();
+    public int inventorySpace = 0;
+    public int maxInven = 2;
 
     private void OnEnable()
     {
@@ -32,7 +34,12 @@ public class InventoryScript : ScriptableObject, ISerializationCallbackReceiver
             }
         }
 
-        Container.Add(new InventorySlot(database.GetId[_item],_item, _amount));
+        if (inventorySpace < maxInven)
+        {
+            Container.Add(new InventorySlot(database.GetId[_item], _item, _amount));
+            inventorySpace++;
+        }
+        
 
     }
 
