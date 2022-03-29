@@ -71,6 +71,24 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""baslls"",
+                    ""type"": ""Button"",
+                    ""id"": ""3108aec3-7862-4930-a679-d5a512b8068c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""cck"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4215fec-4729-4dc3-a2e7-16c878c2bbb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""action"": ""Sneak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4093cc77-010e-47cd-b11e-10ca97abe310"",
+                    ""path"": ""<Keyboard>/#(C)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""baslls"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff846683-e381-460a-8f92-caf5c91c16f9"",
+                    ""path"": ""<Keyboard>/#(V)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""cck"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +225,8 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Scavenge = m_Player.FindAction("Scavenge", throwIfNotFound: true);
         m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
+        m_Player_baslls = m_Player.FindAction("baslls", throwIfNotFound: true);
+        m_Player_cck = m_Player.FindAction("cck", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +291,8 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Scavenge;
     private readonly InputAction m_Player_Sneak;
+    private readonly InputAction m_Player_baslls;
+    private readonly InputAction m_Player_cck;
     public struct PlayerActions
     {
         private @ThirdPersonAction m_Wrapper;
@@ -258,6 +302,8 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Scavenge => m_Wrapper.m_Player_Scavenge;
         public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
+        public InputAction @baslls => m_Wrapper.m_Player_baslls;
+        public InputAction @cck => m_Wrapper.m_Player_cck;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +328,12 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                 @Sneak.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
                 @Sneak.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
                 @Sneak.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSneak;
+                @baslls.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBaslls;
+                @baslls.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBaslls;
+                @baslls.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBaslls;
+                @cck.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCck;
+                @cck.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCck;
+                @cck.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCck;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +353,12 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                 @Sneak.started += instance.OnSneak;
                 @Sneak.performed += instance.OnSneak;
                 @Sneak.canceled += instance.OnSneak;
+                @baslls.started += instance.OnBaslls;
+                @baslls.performed += instance.OnBaslls;
+                @baslls.canceled += instance.OnBaslls;
+                @cck.started += instance.OnCck;
+                @cck.performed += instance.OnCck;
+                @cck.canceled += instance.OnCck;
             }
         }
     }
@@ -312,5 +370,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnScavenge(InputAction.CallbackContext context);
         void OnSneak(InputAction.CallbackContext context);
+        void OnBaslls(InputAction.CallbackContext context);
+        void OnCck(InputAction.CallbackContext context);
     }
 }

@@ -9,10 +9,10 @@ public class AIBehaviour : MonoBehaviour
 {
     // Player Reference
     public Transform player;
-    
+
     public float wanderRadius;
     public float wanderTimer;
- 
+
     private Transform target;
     private NavMeshAgent agent;
     private float timer;
@@ -20,14 +20,17 @@ public class AIBehaviour : MonoBehaviour
     public Vector3 newDestination;
 
     private FieldOfView FOVagent;
+
     // AI Properties
     private float _lineOfSight = 15;
     private float _playerSuspicion = 101;
     private float _suspicionThreshold = 100;
     private bool _playerDetected = false;
-    
+    private float dangerZone = 5;
+
     // AI States
     public AI_State ai_state;
+
     public enum AI_State
     {
         isIdle,
@@ -35,35 +38,53 @@ public class AIBehaviour : MonoBehaviour
         isChasing,
         isSearching
     }
-    
+
     private bool _isIdle = false;
     private bool _isObserving = false;
     private bool _isChasing = false;
     private bool _isSearching = false;
 
     // Use this for initialization
-    void OnEnable () {
-        agent = GetComponent<NavMeshAgent> ();
+    void OnEnable()
+    {
+        agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
         FOVagent = GetComponent<FieldOfView>();
     }
- 
+
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         timer += Time.deltaTime;
         Behaviour();
         LineOfSightDetection();
+
         FOVagent.FieldOfViewCheck();
+
+
+        if (ThirdPersonController.playerActionsAsset.Player.baslls.triggered)
+        {
+            _playerSuspicion += 10;
+            print("SUSPicion increase: " + _playerSuspicion);
+        }
+
+        if (ThirdPersonController.playerActionsAsset.Player.cck.triggered)
+        {
+            _playerSuspicion -= 10;
+            print("SUSPicion decrease: " + _playerSuspicion);
+        }
+
     }
- 
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
+
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
         Vector3 randDirection = Random.insideUnitSphere * dist;
- 
+
         randDirection += origin;
         NavMeshHit navHit;
-        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
         return navHit.position;
-        
+
     }
 
     private void Behaviour()
@@ -74,21 +95,29 @@ public class AIBehaviour : MonoBehaviour
                 if (!_playerDetected)
                 {
                     Debug.Log("AI is Idle");
-                    if (timer >= wanderTimer) {
+                    if (timer >= wanderTimer)
+                    {
                         Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
                         agent.SetDestination(newPos);
                         newDestination = newPos;
                         timer = 0;
                     }
                 }
+
                 break;
             case AI_State.isObserving:
                 if (_playerDetected && _playerSuspicion < _suspicionThreshold)
                 {
                     Debug.Log("AI is Observing");
                     _isObserving = true;
+
                     //transform.forward = player.transform.position;
+
+                    transform.forward = player.transform.position;
+
+
                 }
+
                 _isObserving = false;
                 break;
             case AI_State.isChasing:
@@ -99,6 +128,7 @@ public class AIBehaviour : MonoBehaviour
                     agent.SetDestination(newPos);
                     print("Chasing 4 real now");
                 }
+
                 break;
             case AI_State.isSearching:
                 Debug.Log("AI is Searching");
@@ -121,33 +151,52 @@ public class AIBehaviour : MonoBehaviour
             if (_playerSuspicion > _suspicionThreshold)
             {
                 ai_state = AI_State.isChasing;
+
+                if (dist < _lineOfSight)
+                {
+                    _playerDetected = true;
+                    ai_state = AI_State.isObserving;
+                    Debug.Log("IN LOS");
+
+                    if (_playerSuspicion >= _suspicionThreshold)
+                    {
+                        _playerDetected = true;
+                        ai_state = AI_State.isChasing;
+
+
+                    }
+                }
+                else if (dist > _lineOfSight)
+                {
+                    _playerDetected = false;
+                    ai_state = AI_State.isIdle;
+                    //Debug.Log("NOT IN LOS");
+                }
+
+
             }
         }
-        else
-        {
-            _playerDetected = false;
-            ai_state = AI_State.isIdle;
-            //Debug.Log("NOT IN LOS");
-        }
     }
-    
+
+
     private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, wanderRadius);
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(newDestination, 0.5f);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _lineOfSight);
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(transform.position, wanderRadius);
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(newDestination, 0.5f);
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(transform.position, _lineOfSight);
 
-        
-    }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            print("Collision AI, Player");
-        }
-    }
+            }
+
+            public void OnTriggerEnter(Collider other)
+            {
+                if (other.CompareTag("Player"))
+                {
+                    print("Collision AI, Player");
+                }
+            }
 }
+    
