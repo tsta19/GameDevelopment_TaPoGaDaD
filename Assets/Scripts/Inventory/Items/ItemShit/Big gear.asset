@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a91403d71030094eac69887cec2beaa, type: 3}
-  m_Name: New Item Database
+  m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
+  m_Name: Big gear
   m_EditorClassIdentifier: 
-  Items: []
+  prefab: {fileID: 2088778677216115890, guid: 2a538c84e2bc0894eba1fafb5cfb0544, type: 3}
+  type: 0
+  description: A big gear. I can use this to upgrade myself.
+  weight: 15
+  noise: 15
+  value: 100

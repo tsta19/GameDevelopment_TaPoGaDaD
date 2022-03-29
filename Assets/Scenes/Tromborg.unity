@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a4230227c979c40b8768de0107144b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 3a27179b0da8f1d4197311f7c0d20287, type: 2}
+  inventory: {fileID: 11400000, guid: 625d53b75c5cbc4419ffc85768892d7e, type: 2}
 --- !u!1 &1671961451
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e81427ba930fe84682ecbec18a04fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 3a27179b0da8f1d4197311f7c0d20287, type: 2}
+  inventory: {fileID: 11400000, guid: 625d53b75c5cbc4419ffc85768892d7e, type: 2}
   x_start: -114
   y_start: 115
   x_space_between_item: 22
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5bad4cd763772408ba74035080b1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: d87edf20dda02cb489a5e7f79c080569, type: 2}
+  item: {fileID: 11400000, guid: 8d5d0d1c29a41ac4b86a41a33a4edf64, type: 2}
 --- !u!135 &1964808834
 SphereCollider:
   m_ObjectHideFlags: 0

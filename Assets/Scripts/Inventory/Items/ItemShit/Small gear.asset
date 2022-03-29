@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
-  m_Name: hejh
+  m_Name: Small gear
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3265489944094483069, guid: 30ab6c2132ce8894da075407ce43cb23, type: 3}
   type: 0
-  description: 
-  weight: 0
-  noise: 0
-  value: 0
-  partValue: 0
+  description: A small gear. I can use this to upgrade myself.
+  weight: 5
+  noise: 5
+  value: 20
