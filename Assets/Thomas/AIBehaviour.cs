@@ -94,7 +94,7 @@ public class AIBehaviour : MonoBehaviour
             case AI_State.isIdle:
                 if (!_playerDetected)
                 {
-                    Debug.Log("AI is Idle");
+                    
                     if (timer >= wanderTimer)
                     {
                         Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);

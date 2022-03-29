@@ -53,7 +53,7 @@ public class InventoryScript : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public void Save()
