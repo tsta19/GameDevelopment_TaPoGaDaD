@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,9 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    public float radius;
+    public float radius = 15;
     [Range(0, 360)]
-    public float angle;
+    public float angle = 100;
 
     public GameObject playerRef;
 
@@ -48,14 +49,14 @@ public class FieldOfView : MonoBehaviour
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
-
+            
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     canSeePlayer = true;
-                    Debug.Log("Enemy can see player. ");
+                    //Debug.Log("Enemy can see player. ");
                 }
                 else
                     canSeePlayer = false;
@@ -67,8 +68,14 @@ public class FieldOfView : MonoBehaviour
             canSeePlayer = false;
 
         return canSeePlayer;
-    } 
-    
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
 
     // Update is called once per frame
     void Update()
