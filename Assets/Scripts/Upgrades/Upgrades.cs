@@ -94,6 +94,7 @@ public class Upgrades : MonoBehaviour
 
     void MakeUpgrade()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("E key was pressed");
@@ -102,11 +103,28 @@ public class Upgrades : MonoBehaviour
                 upgradeMenu.SetActive(true);
             }
         }
+        */
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            UpgradeInventory();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            UpgradeSneak();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            UpgradeDisguise();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            UpgradeSpeed();
+        }
     }
 
     void UpgradeInventory()
     {
-        inventoryClass.inventorySpace += 1; // increases inventory space
+        inventoryClass.maxInven += 1; // increases max inventory space
         playerClass.playerNoise += 2;       // increases noise
 
         // a big inventory slows you down when running, but running will always be faster than walking
