@@ -25,14 +25,19 @@ public class PlayerClass : MonoBehaviour
     public float runSpeed = 7;
     public bool buttonBool = true;
     public GameObject panel;
-    
+    private Rigidbody playerRB;
     public ThirdPersonController controller;
     //public Collider[] noiseColliders = new Collider[10];
+    private float hwTimerLeft = 0;
+    private float hwTimerRight = 0;
+    private float hwTimeCap = 2;
+    
     
     public PlayerClass(string name)
     {
         playerName = name;
         controller = GetComponent<ThirdPersonController>();
+        
     }
 
     public void run()
@@ -40,16 +45,44 @@ public class PlayerClass : MonoBehaviour
         isRunning = true;
         playerNoise = 20;
         controller.maxSpeed = runSpeed;
+        print("SPRINTING");
 
     }
 
     public void humanWalk()
     {
-        isHumanWalk = true;
-        playerNoise = 10;
+
         // Her ska være mechanics for menneske-gang
         // der kan eg. være lyd-straf for at gå dårligt
-        
+        if (isHumanWalk)
+        {
+            hwTimerLeft += Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
+                hwTimerLeft = 0;
+            }
+
+            if (hwTimerLeft > hwTimeCap)
+            {
+                print("TOO SLOW, LEFT, TIME: " + hwTimerLeft);
+                playerRB.AddForce(Vector3.left, ForceMode.Impulse);
+            }
+
+            hwTimerRight += Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
+                hwTimerRight = 0;
+            }
+
+            if (hwTimerRight > hwTimeCap)
+            {
+                print("TOO SLOW, RIGHT, TIME: " + hwTimerRight);
+                playerRB.AddForce(Vector3.right, ForceMode.Impulse);
+            }
+        }
+
     }
 
     public void sneak()
@@ -72,7 +105,7 @@ public class PlayerClass : MonoBehaviour
         if (other.CompareTag("ScavengeO"))
         {
             
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 print("other" + other);
                 scavengeTimerBool = true;
@@ -182,6 +215,9 @@ public class PlayerClass : MonoBehaviour
         walkSpeed = 5;
         sneakSpeed = 1;
         runSpeed = 7;
+        hwTimeCap = 2;
+        playerRB = this.GetComponent<Rigidbody>();
+        print("RigidBody: " + playerRB);
     }
 
     public void Update()
@@ -209,7 +245,7 @@ public class PlayerClass : MonoBehaviour
             newItem = false;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             if (isRunning)
             {
@@ -219,6 +255,23 @@ public class PlayerClass : MonoBehaviour
             else if (!isRunning)
             {
                 run();
+            }
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (isHumanWalk)
+            {
+                isHumanWalk = false;
+                hwTimerLeft = 0;
+                hwTimerRight = 0;
+                normalState();
+            }
+            else if (!isHumanWalk)
+            {
+                isHumanWalk = true;
+                humanWalk();
             }
             
         }
