@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// To do: 
+// - Ændre cost, så det koster specifikke items.
 
 public class Upgrades : MonoBehaviour
 {
-
     public GameObject craftingBench;
 
     private PlayerClass playerClass;
@@ -13,8 +14,8 @@ public class Upgrades : MonoBehaviour
     private FieldOfView fieldOfViewClass;
     private AIBehaviour AIBehaviourClass;
 
-    public GameObject upgradeMenu; // Panel
-    public GameObject message; // Panel
+    public GameObject upgradeMenu;  // Panel
+    public GameObject message;      // Panel
 
     private bool canCraft;      // Is the player close enough to the bench? 
     [Range(0, 360)]
@@ -25,13 +26,14 @@ public class Upgrades : MonoBehaviour
     public LayerMask craftingBenchMask;
     public LayerMask obstructionMask;
 
-    // Variables that can be upgraded
-    public int inventorySize = 2;
-    public int noise = 1;
-    public int sneak = 1;
-    public int disguise = 1;
-    public int speed = 1;
+    // The cost of upgrading increases every time you upgrade
+    private int upgrInventoryCost = 2;
+    private int upgrSneakCost = 2;
+    private int upgrSpeedCost = 2;
+    private int upgrDisguiseCost = 2;
 
+    // Win condition
+    private int disguiseLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class Upgrades : MonoBehaviour
         fieldOfViewClass = GetComponent<FieldOfView>();
         AIBehaviourClass = GetComponent<AIBehaviour>();
 
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -124,6 +126,9 @@ public class Upgrades : MonoBehaviour
 
     void UpgradeInventory()
     {
+        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
+        upgrInventoryCost += 1; // It gets more expensive to upgrade this next time
+
         inventoryClass.maxInven += 1; // increases max inventory space
         playerClass.playerNoise += 2;       // increases noise
 
@@ -138,10 +143,14 @@ public class Upgrades : MonoBehaviour
         {
             AIBehaviourClass._suspicionTimer -= 0.5f;
         }
+        Debug.Log("Upgraded inventory");
     }
 
     void UpgradeSneak()
     {
+        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
+        upgrSneakCost += 1; // It gets more expensive to upgrade this next time
+
         // Can move faster and more silent while sneaking
         playerClass.sneakSpeed += 1;
 
@@ -149,23 +158,41 @@ public class Upgrades : MonoBehaviour
         {
             playerClass.playerNoise -= 3;   // decreases noise
         }
-        
+        Debug.Log("Upgraded sneak");
     }
 
     void UpgradeDisguise()
     {
+        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
+        upgrDisguiseCost += 1; // It gets more expensive to upgrade this next time
+
         // Man skal tættere på AIs for at blive opdaget og man skal være i deres FoV i længere tid.
-        if (fieldOfViewClass.radius >= 8)
+        if (fieldOfViewClass.radius >= 3)
         {
             fieldOfViewClass.radius -= 3;
         }
+        else
+        {
+            fieldOfViewClass.radius = 0;
+            Debug.Log("You won the game!"); // Man vinder, når AIs ikke længere ser spilleren
+        }
+
         AIBehaviourClass._suspicionTimer += 1.0f;
+
+        Debug.Log("Upgraded disguise");
+
     }
 
     void UpgradeSpeed()
     {
+        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
+        upgrSpeedCost += 1; // It gets more expensive to upgrade this next time
+
         playerClass.walkSpeed += 1;
         playerClass.runSpeed += 2;
+
+        Debug.Log("Upgraded speed");
     }
+
 }
     
