@@ -14,16 +14,15 @@ public class PlayerClass : MonoBehaviour
     public static bool isSneaky;
     public static bool isRunning;
     public float playerNoise = 10;
-    public float speed;
     public static float scavengeTime = 2.0f;
     public InventoryScript inventory;
     public float invenWeight;
     public bool newItem = false;
     public float scavengeTimer = 0;
     public bool scavengeTimerBool;
-    private float sneakSpeed = 1;
-    private float walkSpeed = 5;
-    private int runSpeed = 7;
+    public float sneakSpeed = 1;
+    public float walkSpeed = 5;
+    public float runSpeed = 7;
     
     public ThirdPersonController controller;
     //public Collider[] noiseColliders = new Collider[10];
