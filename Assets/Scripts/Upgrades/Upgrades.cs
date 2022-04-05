@@ -108,6 +108,10 @@ public class Upgrades : MonoBehaviour
     {
         inventoryClass.inventorySpace += 1; // increases inventory space
         playerClass.playerNoise += 3;       // increases noise
+
+        // Man bliver nemmere opdaget, når man har større inventory
+        fieldOfViewClass.radius += 1;
+        AIBehaviourClass._suspicionTimer -= 0.5f;
     }
 
     void UpgradeSneak()
