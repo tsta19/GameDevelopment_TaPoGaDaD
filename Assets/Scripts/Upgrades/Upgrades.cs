@@ -107,11 +107,19 @@ public class Upgrades : MonoBehaviour
     void UpgradeInventory()
     {
         inventoryClass.inventorySpace += 1; // increases inventory space
-        playerClass.playerNoise += 3;       // increases noise
+        playerClass.playerNoise += 2;       // increases noise
+
+        // a big inventory slows you down when running, but running will always be faster than walking
+        if (playerClass.runSpeed >= playerClass.walkSpeed + 3) {
+            playerClass.runSpeed -= 1;          
+        }
 
         // Man bliver nemmere opdaget, når man har større inventory
         fieldOfViewClass.radius += 1;
-        AIBehaviourClass._suspicionTimer -= 0.5f;
+        if (AIBehaviourClass._suspicionTimer >= 2.5)
+        {
+            AIBehaviourClass._suspicionTimer -= 0.5f;
+        }
     }
 
     void UpgradeSneak()
@@ -123,6 +131,7 @@ public class Upgrades : MonoBehaviour
         {
             playerClass.playerNoise -= 3;   // decreases noise
         }
+        
     }
 
     void UpgradeDisguise()
