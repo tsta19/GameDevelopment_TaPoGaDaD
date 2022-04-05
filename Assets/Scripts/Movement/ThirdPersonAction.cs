@@ -69,7 +69,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""id"": ""d9a10c02-ac11-4639-9058-171c398d9687"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -85,6 +85,15 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""name"": ""cck"",
                     ""type"": ""Button"",
                     ""id"": ""a4215fec-4729-4dc3-a2e7-16c878c2bbb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""251213d2-dd22-4888-8fb9-2d3e0c01aeb9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -212,6 +221,17 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""action"": ""cck"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e8e9858-4f10-4a1d-8f74-2814716c6d10"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
         m_Player_baslls = m_Player.FindAction("baslls", throwIfNotFound: true);
         m_Player_cck = m_Player.FindAction("cck", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sneak;
     private readonly InputAction m_Player_baslls;
     private readonly InputAction m_Player_cck;
+    private readonly InputAction m_Player_Run;
     public struct PlayerActions
     {
         private @ThirdPersonAction m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
         public InputAction @baslls => m_Wrapper.m_Player_baslls;
         public InputAction @cck => m_Wrapper.m_Player_cck;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                 @cck.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCck;
                 @cck.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCck;
                 @cck.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCck;
+                @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                 @cck.started += instance.OnCck;
                 @cck.performed += instance.OnCck;
                 @cck.canceled += instance.OnCck;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         void OnSneak(InputAction.CallbackContext context);
         void OnBaslls(InputAction.CallbackContext context);
         void OnCck(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

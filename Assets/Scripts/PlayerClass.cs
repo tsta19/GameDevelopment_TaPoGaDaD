@@ -13,16 +13,18 @@ public class PlayerClass : MonoBehaviour
     public static bool isHumanWalk;
     public static bool isSneaky;
     public static bool isRunning;
-    public float playerNoise = 15;
+    public float playerNoise = 10;
     public float speed;
     public static float scavengeTime = 2.0f;
     public InventoryScript inventory;
     public float invenWeight;
     public bool newItem = false;
-    
     public float scavengeTimer = 0;
     public bool scavengeTimerBool;
-
+    private float sneakSpeed = 1;
+    private float walkSpeed = 5;
+    private int runSpeed = 7;
+    
     public ThirdPersonController controller;
     //public Collider[] noiseColliders = new Collider[10];
     
@@ -35,8 +37,8 @@ public class PlayerClass : MonoBehaviour
     public void run()
     {
         isRunning = true;
-        playerNoise = 30;
-        speed = 7;
+        playerNoise = 20;
+        controller.maxSpeed = runSpeed;
 
     }
 
@@ -51,7 +53,7 @@ public class PlayerClass : MonoBehaviour
 
     public void sneak()
     {
-        controller.maxSpeed = 1;
+        controller.maxSpeed = sneakSpeed;
         isSneaky = true;
         playerNoise = 3;
         print("SNEAKING");
@@ -60,7 +62,7 @@ public class PlayerClass : MonoBehaviour
 
     public void normalState()
     {
-        controller.maxSpeed = 5;
+        controller.maxSpeed = walkSpeed;
         playerNoise = 10;
     }
     
@@ -69,7 +71,7 @@ public class PlayerClass : MonoBehaviour
         if (other.CompareTag("ScavengeO"))
         {
             
-            if (ThirdPersonController.playerActionsAsset.Player.Scavenge.triggered)
+            if (Input.GetKey(KeyCode.F))
             {
                 print("other" + other);
                 scavengeTimerBool = true;
@@ -106,6 +108,7 @@ public class PlayerClass : MonoBehaviour
         }
 
     }
+    
     public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("ScavengeO"))
@@ -133,15 +136,13 @@ public class PlayerClass : MonoBehaviour
     {
         //int noiseSphere = Physics.OverlapSphereNonAlloc(transform.position, playerNoise, noiseColliders);
         Collider[] noiseSphere = Physics.OverlapSphere(transform.position, playerNoise);
-        print("playernoise: " + playerNoise);
-        print(noiseSphere);
         if (noiseSphere.Length > 0)
         {
             
             for (int i = 0; i < noiseSphere.Length; i++)
             {
                 float dist = Vector3.Distance(noiseSphere[i].transform.position, transform.position);
-                print("dist: " + dist);
+                
                 if (dist <= playerNoise && noiseSphere[i].CompareTag("NPC"))
                 {
                     print("message sent");
@@ -159,11 +160,18 @@ public class PlayerClass : MonoBehaviour
         
     }
 
+    public void Start()
+    {
+        walkSpeed = 5;
+        sneakSpeed = 1;
+        runSpeed = 7;
+    }
+
     public void Update()
     {
         
         // Check states
-        if (ThirdPersonController.playerActionsAsset.Player.Sneak.triggered)
+        if (Input.GetKeyDown(KeyCode.G))
         {
             if (isSneaky)
             {
@@ -183,7 +191,21 @@ public class PlayerClass : MonoBehaviour
             
             newItem = false;
         }
-        
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (isRunning)
+            {
+                isRunning = false;
+                normalState();
+            }
+            else if (!isRunning)
+            {
+                run();
+            }
+            
+        }
+
         checkNoiseSphere();
        
 
