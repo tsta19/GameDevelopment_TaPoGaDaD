@@ -189,7 +189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440108189}
-  m_LocalRotation: {x: 0.031026043, y: 0.0000000010748812, z: -3.3365373e-11, w: 0.9995186}
+  m_LocalRotation: {x: 0.10297049, y: 0.0000000042787303, z: -4.4293744e-10, w: 0.9946844}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1.6554359, z: -16.761824}
+  m_FollowOffset: {x: 0, y: 1.8919374, z: -7.642117}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -389,7 +389,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920275961}
-  m_LocalRotation: {x: 0.049201645, y: -1e-45, z: -0, w: 0.9987889}
+  m_LocalRotation: {x: 0.12104626, y: -0.0000000042699653, z: 5.20692e-10, w: 0.9926469}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1.6554359, z: -16.761824}
+  m_FollowOffset: {x: 0, y: 1.8919374, z: -7.642117}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -576,12 +576,12 @@ MonoBehaviour:
   m_VerticalDamping: 0
   m_ScreenX: 0.5036456
   m_ScreenY: 0.52777743
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0.5759257
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
+  m_DeadZoneWidth: 0.284
+  m_DeadZoneHeight: 0.785
+  m_SoftZoneWidth: 0.941
+  m_SoftZoneHeight: 0.9
+  m_BiasX: -0.09100001
+  m_BiasY: -0.1719999
   m_CenterOnActivate: 1
 --- !u!114 &1149424970
 MonoBehaviour:
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 1.6554359, z: -16.761824}
+  m_FollowOffset: {x: 0, y: 1.8919374, z: -7.642117}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -755,14 +755,14 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_BindingMode: 4
-  m_SplineCurvature: 0.2
+  m_SplineCurvature: 0.344
   m_Orbits:
-  - m_Height: 14
-    m_Radius: 12
-  - m_Height: 5
-    m_Radius: 18
-  - m_Height: -1.5
-    m_Radius: 12.41
+  - m_Height: 3.69
+    m_Radius: -23.63
+  - m_Height: 2.76
+    m_Radius: 4.4
+  - m_Height: 0.63
+    m_Radius: 4.32
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 920275962}
@@ -776,7 +776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478457471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.598427, y: 1.6554354, z: -22.468704}
+  m_LocalPosition: {x: 4.598427, y: 1.8919369, z: -13.348998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 920275963}
@@ -866,7 +866,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841764282}
-  m_LocalRotation: {x: 0.039527543, y: -0.002357061, z: 0.00009324194, w: 0.9992157}
+  m_LocalRotation: {x: 0.111763254, y: -0.002267554, z: 0.00025502764, w: 0.9937323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1151,8 +1151,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958283440}
-  m_LocalRotation: {x: 0.034257013, y: -0.00089553447, z: 0.00004018121, w: 0.99941266}
-  m_LocalPosition: {x: 4.598427, y: 1.6554354, z: -22.468704}
+  m_LocalRotation: {x: 0.10631305, y: -0.00086117873, z: 0.0001016664, w: 0.9943324}
+  m_LocalPosition: {x: 4.598427, y: 1.8919369, z: -13.348998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1214,6 +1214,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2102482233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102482228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bfb3e8417264f4bad4cd0def415d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2106564711
 GameObject:
   m_ObjectHideFlags: 0

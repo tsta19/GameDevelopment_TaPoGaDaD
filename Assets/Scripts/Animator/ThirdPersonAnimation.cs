@@ -9,6 +9,7 @@ public class ThirdPersonAnimation : MonoBehaviour
     private Rigidbody rb;
 
     private float maxSpeed = 5f;
+    private float jumpForce = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,6 @@ public class ThirdPersonAnimation : MonoBehaviour
     void Update()
     {
         animator.SetFloat("speed", rb.velocity.magnitude / maxSpeed);
+        animator.SetFloat("jumpSpeed", rb.velocity.magnitude / jumpForce);
     }
 }
