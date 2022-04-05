@@ -23,6 +23,8 @@ public class PlayerClass : MonoBehaviour
     public float sneakSpeed = 1;
     public float walkSpeed = 5;
     public float runSpeed = 7;
+    public bool buttonBool = true;
+    public GameObject panel;
     
     public ThirdPersonController controller;
     //public Collider[] noiseColliders = new Collider[10];
@@ -159,8 +161,18 @@ public class PlayerClass : MonoBehaviour
         
     }
 
+    public void openIven()
+    {
+        panel.SetActive(true);
+    }
+    public void closeInven()
+    {
+        panel.SetActive(false);
+    }
+
     public void Start()
     {
+        panel.SetActive(false);
         walkSpeed = 5;
         sneakSpeed = 1;
         runSpeed = 7;
@@ -203,6 +215,16 @@ public class PlayerClass : MonoBehaviour
                 run();
             }
             
+        }
+        if (Input.GetKeyDown("i") && buttonBool == true)
+        {
+            openIven();
+            buttonBool = false;
+        }
+        else if (Input.GetKeyDown("i") && buttonBool == false)
+        {
+            closeInven();
+            buttonBool = true;
         }
 
         checkNoiseSphere();
