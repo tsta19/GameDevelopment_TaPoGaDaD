@@ -27,7 +27,7 @@ public class AIBehaviour : MonoBehaviour
     private float _suspicionThreshold = 100;
     private bool _playerDetected = false;
     private float dangerZone = 5;
-    private float _suspicionTimer = 5.0f;
+    public float _suspicionTimer = 5.0f;
 
     private Vector3 suspicousPos;
 
