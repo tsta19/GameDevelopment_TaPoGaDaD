@@ -777,8 +777,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369909037}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 26.285501, y: 3.4379, z: 71.38}
-  m_LocalScale: {x: 2.2393343, y: 1, z: 8.987475}
+  m_LocalPosition: {x: 29.546, y: 3.4379, z: 78.9}
+  m_LocalScale: {x: 2.2393343, y: 1, z: 9.639966}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1713,8 +1713,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102909182}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -17.9, y: 3.9, z: 31}
-  m_LocalScale: {x: 2.3318992, y: 1, z: 8.030268}
+  m_LocalPosition: {x: -17.9, y: 3.9, z: 35.3052}
+  m_LocalScale: {x: 2.3318992, y: 1, z: 8.891112}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2629,8 +2629,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649062756}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 71.200005, y: 3.4379, z: 30.760601}
-  m_LocalScale: {x: 2.2393343, y: 1, z: 8.030268}
+  m_LocalPosition: {x: 71.200005, y: 3.4379, z: 35.1708}
+  m_LocalScale: {x: 2.2393343, y: 1, z: 8.911991}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2698,12 +2698,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNoise: 15
-  speed: 0
   inventory: {fileID: 11400000, guid: 465bdad7023b78c4ba93c46e138a4740, type: 2}
   invenWeight: 0
   newItem: 0
   scavengeTimer: 0
   scavengeTimerBool: 0
+  sneakSpeed: 0
+  walkSpeed: 0
+  runSpeed: 0
   controller: {fileID: 1672210269}
 --- !u!114 &1672210269
 MonoBehaviour:

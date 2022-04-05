@@ -30,11 +30,15 @@ public class AIBehaviour : MonoBehaviour
     public float _suspicionTimer = 5.0f;
 
     private Vector3 suspicousPos;
-
+    
     private bool susSound = false;
     // AI States
     public AI_State ai_state;
-
+    
+    // Grab variables
+    private bool grabBool = false;
+    private float grabTimer = 0;
+    private float grabTime = 2;
     
     // An Enumerator of the possible AI States
     public enum AI_State
@@ -234,6 +238,13 @@ public class AIBehaviour : MonoBehaviour
         _playerSuspicion = 0;
         _suspicionTimer = 5.0f;
 
+    }
+    
+    private void AttackGrab(Collider playerCollider)
+    {
+        grabBool = true;
+        Vector3 playerPos = playerCollider.transform.position;
+        
     }
 
     
