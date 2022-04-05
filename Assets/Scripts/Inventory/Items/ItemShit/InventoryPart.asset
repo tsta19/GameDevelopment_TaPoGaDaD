@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f529a1e84712f17449479a3c126386f4, type: 3}
-  m_Name: Big gear
+  m_Name: InventoryPart
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8930385231737316080, guid: a8796290753b4b54abad145829ad9ac3, type: 3}
-  type: 0
-  description: A big gear. I can use this to upgrade myself.
+  prefab: {fileID: 0}
+  type: 1
+  description: Can be used to upgrade your inventory space.
   weight: 0.2
-  noise: 15
-  value: 100
+  noise: 1
+  speedVal: 0
+  sneakVal: 0
+  disguiseVal: 0
+  invenVal: 25

@@ -97,6 +97,7 @@ public class PlayerClass : MonoBehaviour
                         inventory.AddItem(itemmm.item1, 1);
                         print("Successfully scavenged");
                         print(inventory);
+                        inventory.Save();
                         
                     }
                     newItem = true;
@@ -168,6 +169,11 @@ public class PlayerClass : MonoBehaviour
     public void closeInven()
     {
         panel.SetActive(false);
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
     }
 
     public void Start()

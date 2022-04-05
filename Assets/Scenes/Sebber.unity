@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c89d805df176945b020c4285dee8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item1: {fileID: 11400000, guid: 8d5d0d1c29a41ac4b86a41a33a4edf64, type: 2}
+  item1: {fileID: 11400000, guid: 54ac271ae0befbd41bb77297d6593c66, type: 2}
 --- !u!65 &270779306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2449,6 +2449,7 @@ GameObject:
   - component: {fileID: 1430926423}
   - component: {fileID: 1430926425}
   - component: {fileID: 1430926424}
+  - component: {fileID: 1430926426}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -2513,6 +2514,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430926422}
   m_CullTransparentMesh: 1
+--- !u!114 &1430926426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430926422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e81427ba930fe84682ecbec18a04fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 465bdad7023b78c4ba93c46e138a4740, type: 2}
+  x_start: -74
+  y_start: 115
+  x_space_between_item: 63
+  number_of_column: 6
+  y_space_between_items: 63
 --- !u!1 &1462578316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,6 +2966,8 @@ MonoBehaviour:
   sneakSpeed: 0
   walkSpeed: 0
   runSpeed: 0
+  buttonBool: 0
+  panel: {fileID: 1430926422}
   controller: {fileID: 1672210269}
 --- !u!114 &1672210269
 MonoBehaviour:
