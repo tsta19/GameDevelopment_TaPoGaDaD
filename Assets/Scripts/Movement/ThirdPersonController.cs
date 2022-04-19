@@ -40,7 +40,7 @@ public class ThirdPersonController : MonoBehaviour
     private void OnDisable()
     {
         playerActionsAsset.Player.Jump.started -= DoJump;
-        //playerActionsAsset.Player.Disable();
+        playerActionsAsset.Player.Disable();
     }
 
     private void FixedUpdate()
@@ -89,8 +89,11 @@ public class ThirdPersonController : MonoBehaviour
 
     private void DoJump(InputAction.CallbackContext obj)
     {
+        if (IsGrounded())
+        {
+            forceDirection += Vector3.up * jumpForce;
+        }
         
-        forceDirection += Vector3.up * jumpForce;
         
     }
 
