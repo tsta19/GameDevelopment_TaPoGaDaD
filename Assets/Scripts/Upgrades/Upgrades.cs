@@ -45,7 +45,7 @@ public class Upgrades : MonoBehaviour
         fieldOfViewClass = GetComponent<FieldOfView>();
         AIBehaviourClass = GetComponent<AIBehaviour>();
 
-    }
+}
 
     // Update is called once per frame
     void Update()
@@ -87,7 +87,7 @@ public class Upgrades : MonoBehaviour
 
     void ShowMessage()
     {
-        Debug.Log("Press E to upgrade");
+        // Debug.Log("You can upgrade by pressing 1, 2, 3 or 4");
         if (message != null)
         {
             message.SetActive(true);
@@ -106,93 +106,114 @@ public class Upgrades : MonoBehaviour
             }
         }
         */
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+
+        Debug.Log("You should press the E button.");
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("The button E was pressed");
             UpgradeInventory();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             UpgradeSneak();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             UpgradeDisguise();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             UpgradeSpeed();
         }
     }
 
+
     void UpgradeInventory()
     {
-        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
-        upgrInventoryCost += 1; // It gets more expensive to upgrade this next time
 
-        inventoryClass.maxInven += 1; // increases max inventory space
-        playerClass.playerNoise += 2;       // increases noise
-
-        // a big inventory slows you down when running, but running will always be faster than walking
-        if (playerClass.runSpeed >= playerClass.walkSpeed + 3) {
-            playerClass.runSpeed -= 1;          
-        }
-
-        // Man bliver nemmere opdaget, når man har større inventory
-        fieldOfViewClass.radius += 1;
-        if (AIBehaviourClass._suspicionTimer >= 2.5)
+        if (playerClass.inventoryVal >= upgrInventoryCost)
         {
-            AIBehaviourClass._suspicionTimer -= 0.5f;
+            inventoryClass.inventorySpace -= upgrInventoryCost; // Cost of upgrade
+            upgrInventoryCost += 1; // It gets more expensive to upgrade this next time
+
+            inventoryClass.maxInven += 1;   // increases max inventory space
+            playerClass.playerNoise += 2;   // increases noise
+
+            // a big inventory slows you down when running, but running will always be faster than walking
+            if (playerClass.runSpeed >= playerClass.walkSpeed + 3)
+            {
+                playerClass.runSpeed -= 1;
+            }
+
+            // man bliver nemmere opdaget, når man har større inventory
+            fieldOfViewClass.radius += 1;
+            if (AIBehaviourClass._suspicionTimer >= 2.5)
+            {
+                AIBehaviourClass._suspicionTimer -= 0.5f;
+            }
+            Debug.Log("Upgraded inventory");
         }
-        Debug.Log("Upgraded inventory");
     }
 
     void UpgradeSneak()
     {
-        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
-        upgrSneakCost += 1; // It gets more expensive to upgrade this next time
 
-        // Can move faster and more silent while sneaking
-        playerClass.sneakSpeed += 1;
-
-        if (playerClass.playerNoise >= 3)
+        if (playerClass.sneakVal >= upgrSneakCost)
         {
-            playerClass.playerNoise -= 3;   // decreases noise
+            playerClass.sneakVal -= upgrSneakCost; // Cost of upgrade
+            upgrSneakCost += 1; // It gets more expensive to upgrade this next time
+
+            // Can move faster and more silent while sneaking
+            playerClass.sneakSpeed += 1;
+
+            if (playerClass.playerNoise >= 3)
+            {
+                playerClass.playerNoise -= 3;   // decreases noise
+            }
+            Debug.Log("Upgraded sneak");
         }
-        Debug.Log("Upgraded sneak");
     }
 
     void UpgradeDisguise()
     {
-        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
-        upgrDisguiseCost += 1; // It gets more expensive to upgrade this next time
 
-        // Man skal tættere på AIs for at blive opdaget og man skal være i deres FoV i længere tid.
-        if (fieldOfViewClass.radius >= 3)
+        // playerClass.speedVal = 0;
+
+        if (playerClass.disguiseVal >= upgrDisguiseCost)
         {
-            fieldOfViewClass.radius -= 3;
+            playerClass.disguiseVal -= upgrDisguiseCost; // Cost of upgrade
+            upgrDisguiseCost += 1; // It gets more expensive to upgrade this next time
+
+            // Man skal tættere på AIs for at blive opdaget og man skal være i deres FoV i længere tid.
+            if (fieldOfViewClass.radius >= 3)
+            {
+                fieldOfViewClass.radius -= 3;
+            }
+            else
+            {
+                fieldOfViewClass.radius = 0;
+                Debug.Log("You won the game!"); // Man vinder, når AIs ikke længere ser spilleren
+            }
+
+            AIBehaviourClass._suspicionTimer += 1.0f;
+
+            Debug.Log("Upgraded disguise");
         }
-        else
-        {
-            fieldOfViewClass.radius = 0;
-            Debug.Log("You won the game!"); // Man vinder, når AIs ikke længere ser spilleren
-        }
-
-        AIBehaviourClass._suspicionTimer += 1.0f;
-
-        Debug.Log("Upgraded disguise");
-
     }
 
     void UpgradeSpeed()
     {
-        inventoryClass.inventorySpace -= upgrDisguiseCost; // Cost of upgrade
-        upgrSpeedCost += 1; // It gets more expensive to upgrade this next time
+        if (playerClass.speedVal >= upgrSpeedCost)
+        {
+            playerClass.speedVal -= upgrSpeedCost; // Cost of upgrade
+            upgrSpeedCost += 1; // It gets more expensive to upgrade this next time
 
-        playerClass.walkSpeed += 1;
-        playerClass.runSpeed += 2;
+            playerClass.walkSpeed += 1;
+            playerClass.runSpeed += 2;
 
-        Debug.Log("Upgraded speed");
+            Debug.Log("Upgraded speed");
+        }
     }
-
 }
     

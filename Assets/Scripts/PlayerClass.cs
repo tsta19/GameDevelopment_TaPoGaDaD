@@ -31,10 +31,10 @@ public class PlayerClass : MonoBehaviour
     private float hwTimerLeft = 0;
     private float hwTimerRight = 0;
     private float hwTimeCap = 2;
-    public float sneakVal;
-    public float disguiseVal;
-    public float inventoryVal;
-    public float speedVal;
+    public float sneakVal = 1;
+    public float disguiseVal = 1;
+    public float inventoryVal = 1;
+    public float speedVal = 1;
 
     
     public PlayerClass(string name)
