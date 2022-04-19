@@ -1329,6 +1329,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1672210271}
+    - target: {fileID: 4960601723407987746, guid: af8182b3ec2473a4da8d6217690a7d29, type: 3}
+      propertyPath: thirdPersonController
+      value: 
+      objectReference: {fileID: 1672210269}
     - target: {fileID: 4960601723407987758, guid: af8182b3ec2473a4da8d6217690a7d29, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1375,11 +1379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6437995475858838949, guid: af8182b3ec2473a4da8d6217690a7d29, type: 3}
       propertyPath: angle
-      value: 100
+      value: 145
       objectReference: {fileID: 0}
     - target: {fileID: 6437995475858838949, guid: af8182b3ec2473a4da8d6217690a7d29, type: 3}
       propertyPath: radius
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6437995475858838949, guid: af8182b3ec2473a4da8d6217690a7d29, type: 3}
       propertyPath: playerRef
@@ -2355,7 +2359,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024826110}
-  m_LocalRotation: {x: 0.1174537, y: 0.22748111, z: -0.027650947, w: 0.9662776}
+  m_LocalRotation: {x: 0.117453694, y: 0.22748113, z: -0.027650952, w: 0.9662776}
   m_LocalPosition: {x: 29.377193, y: -2.08, z: 58.93517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2689,7 +2693,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138973601}
-  m_LocalRotation: {x: 0.117453694, y: 0.22748113, z: -0.027650954, w: 0.9662776}
+  m_LocalRotation: {x: 0.1174537, y: 0.22748114, z: -0.02765096, w: 0.9662776}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3318,8 +3322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 465bdad7023b78c4ba93c46e138a4740, type: 2}
-  x_start: -74
-  y_start: 115
+  x_start: -124
+  y_start: 180
   x_space_between_item: 63
   number_of_column: 6
   y_space_between_items: 63
