@@ -3764,6 +3764,7 @@ MonoBehaviour:
   disguiseVal: 0
   inventoryVal: 0
   speedVal: 0
+  badWalkForce: 0
 --- !u!114 &1672210269
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,10 @@ public class PlayerClass : MonoBehaviour
     public float disguiseVal = 1;
     public float inventoryVal = 1;
     public float speedVal = 1;
+    public float badWalkForce = 5000f;
 
+    
+    
     
     public PlayerClass(string name)
     {
@@ -60,31 +63,32 @@ public class PlayerClass : MonoBehaviour
         // der kan eg. være lyd-straf for at gå dårligt
         if (isHumanWalk)
         {
-            hwTimerLeft += Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
-                hwTimerLeft = 0;
-            }
-
             if (hwTimerLeft > hwTimeCap)
             {
                 print("TOO SLOW, LEFT, TIME: " + hwTimerLeft);
-                playerRB.AddForce(Vector3.left, ForceMode.Impulse);
+                playerRB.AddForce(Vector3.left* badWalkForce, ForceMode.Impulse);
+                hwTimerLeft = 0;
+            }
+            
+            hwTimerLeft += Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                hwTimerLeft = 0;
             }
 
+            if (hwTimerRight > hwTimeCap + 1)
+            {
+                print("TOO SLOW, RIGHT, TIME: " + hwTimerRight);
+                playerRB.AddForce(Vector3.right * badWalkForce, ForceMode.Impulse);
+                hwTimerRight = 0;
+            }
+            
             hwTimerRight += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.E))
             {
-                playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
                 hwTimerRight = 0;
             }
-
-            if (hwTimerRight > hwTimeCap)
-            {
-                print("TOO SLOW, RIGHT, TIME: " + hwTimerRight);
-                playerRB.AddForce(Vector3.right, ForceMode.Impulse);
-            }
+            
         }
 
     }
@@ -264,7 +268,7 @@ public class PlayerClass : MonoBehaviour
             newItem = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (isRunning)
             {
@@ -277,6 +281,7 @@ public class PlayerClass : MonoBehaviour
             }
             
         }
+        
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -294,6 +299,13 @@ public class PlayerClass : MonoBehaviour
             }
             
         }
+
+        if (isHumanWalk)
+        { 
+            humanWalk();
+        }
+        
+        
         if (Input.GetKeyDown("i") && buttonBool == true)
         {
             openIven();
