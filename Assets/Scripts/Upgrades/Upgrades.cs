@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// To do: 
-// - Ændre cost, så det koster specifikke items.
 
 public class Upgrades : MonoBehaviour
 {
@@ -45,7 +43,7 @@ public class Upgrades : MonoBehaviour
         fieldOfViewClass = GetComponent<FieldOfView>();
         AIBehaviourClass = GetComponent<AIBehaviour>();
 
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -154,6 +152,10 @@ public class Upgrades : MonoBehaviour
             }
             Debug.Log("Upgraded inventory");
         }
+        else
+        {
+            Debug.Log("You don't have enough items to upgrade your inventory");
+        }
     }
 
     void UpgradeSneak()
@@ -172,6 +174,10 @@ public class Upgrades : MonoBehaviour
                 playerClass.playerNoise -= 3;   // decreases noise
             }
             Debug.Log("Upgraded sneak");
+        }
+        else
+        {
+            Debug.Log("You don't have enough items to upgrade sneak");
         }
     }
 
@@ -200,6 +206,10 @@ public class Upgrades : MonoBehaviour
 
             Debug.Log("Upgraded disguise");
         }
+        else
+        {
+            Debug.Log("You don't have enough items to upgrade disguise");
+        }
     }
 
     void UpgradeSpeed()
@@ -213,6 +223,10 @@ public class Upgrades : MonoBehaviour
             playerClass.runSpeed += 2;
 
             Debug.Log("Upgraded speed");
+        }
+        else
+        {
+            Debug.Log("You don't have enough items to upgrade speed");
         }
     }
 }
