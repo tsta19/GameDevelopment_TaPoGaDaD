@@ -15,6 +15,7 @@ public class AIBehaviour : MonoBehaviour
 
     private Transform target;
     private NavMeshAgent agent;
+    public ThirdPersonController thirdPersonController;
     private float timer;
 
     public Vector3 newDestination;
@@ -22,12 +23,14 @@ public class AIBehaviour : MonoBehaviour
     private FieldOfView FOVagent;
 
     // AI Properties
+    private Rigidbody rb;
     private float _lineOfSight = 15;
     private float _playerSuspicion = 0;
     private float _suspicionThreshold = 100;
     private bool _playerDetected = false;
     private float dangerZone = 5;
     public float _suspicionTimer = 5.0f;
+    private float _grabRadius = 3;
 
     private Vector3 suspicousPos;
     
@@ -37,9 +40,10 @@ public class AIBehaviour : MonoBehaviour
     
     // Grab variables
     private bool grabBool = false;
+    private bool grabTimeDone = false;
     private float grabTimer = 0;
     private float grabTime = 2;
-    
+
     // An Enumerator of the possible AI States
     public enum AI_State
     {
@@ -62,7 +66,10 @@ public class AIBehaviour : MonoBehaviour
         // Instances and timer initialization
         agent = GetComponent<NavMeshAgent>();
         FOVagent = GetComponent<FieldOfView>();
+        thirdPersonController = GetComponent<ThirdPersonController>();
+        rb = GetComponent<Rigidbody>();
         timer = wanderTimer;
+        
     }
 
     // Update is called once per frame
@@ -113,6 +120,9 @@ public class AIBehaviour : MonoBehaviour
                 public float wanderTimer; // Determines how long the AI has to move to said point before choosing a new one.
             */
             case AI_State.isIdle:
+                transform.position = transform.position;
+                // Resets AI position so it doesn't glitch out
+                rb.velocity = new Vector3(0f,0f,0f); 
                 if (!_playerDetected)
                 {
                     if (!_isChasing)
@@ -141,7 +151,7 @@ public class AIBehaviour : MonoBehaviour
                 if (_playerDetected && _playerSuspicion < _suspicionThreshold)
                 {
                     _isObserving = true;
-                    transform.forward = player.transform.position;
+                    transform.LookAt(player);
                     if (_suspicionTimer > 0.0f)
                     {
                         _suspicionTimer -= Time.deltaTime;
@@ -163,7 +173,7 @@ public class AIBehaviour : MonoBehaviour
                 {
                     Vector3 newPos = player.transform.position;
                     agent.SetDestination(newPos);
-                    print("Chasing 4 real now");
+                    AttackGrab();
                 }
                 break;
             /*
@@ -223,6 +233,8 @@ public class AIBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, wanderRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(newDestination, 0.5f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _grabRadius);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -240,13 +252,30 @@ public class AIBehaviour : MonoBehaviour
 
     }
     
-    private void AttackGrab(Collider playerCollider)
+    private void AttackGrab()
     {
-        grabBool = true;
-        Vector3 playerPos = playerCollider.transform.position;
-        
+        float dist = Vector3.Distance(player.transform.position, transform.position);
+        if (dist <= FOVagent.radius && FOVagent.FieldOfViewCheck())
+        {
+            agent.SetDestination(player.transform.position);
+            while (dist <= _grabRadius && !grabTimeDone)
+            {
+                grabBool = true;
+                Debug.Log("Player grabbed and is being destroyed");
+                if (grabTime > 0.0f)
+                {
+                    grabTime -= Time.deltaTime;
+                }
+                else
+                {
+                    grabTimeDone = true;
+                    grabBool = false;
+                    // Remove item from players inventory
+                    Debug.Log("Player Item Removed");
+                    ai_state = AI_State.isIdle;
+                }
+            }
+        }
     }
-
-    
 }
     
