@@ -21,15 +21,16 @@ public class WheelPart : ItemObject
         return weight;
     }
 
+    public override float getNoise()
+    {
+        return noise;
+    }
+
     public override float getspeedVal()
     {
         return speedVal;
     }
 
-    public override float getNoise()
-    {
-        return noise;
-    }
 
     public override float getdisguiseVal()
     {

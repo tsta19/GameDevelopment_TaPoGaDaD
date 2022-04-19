@@ -100,4 +100,24 @@ public class InventorySlot
     {
         return item.getWeight();
     }
+
+    public float getspeedVal()
+    {
+        return item.getspeedVal();
+    }
+
+    public float getsneakVal()
+    {
+        return item.getsneakVal();
+    }
+
+    public float getinvenVal()
+    {
+        return item.getinvenVal();
+    }
+
+    public float getdisguiseVal()
+    {
+        return item.getdisguiseVal();
+    }
 }

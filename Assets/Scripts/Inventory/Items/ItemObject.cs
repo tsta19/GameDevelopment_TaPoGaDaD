@@ -16,8 +16,8 @@ public abstract class ItemObject : ScriptableObject
     public string description;
 
     public abstract float getWeight();
-    public abstract float getspeedVal();
     public abstract float getNoise();
+    public abstract float getspeedVal();
     public abstract float getsneakVal();
     public abstract float getdisguiseVal();
     public abstract float getinvenVal();
