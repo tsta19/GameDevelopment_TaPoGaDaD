@@ -31,7 +31,11 @@ public class PlayerClass : MonoBehaviour
     private float hwTimerLeft = 0;
     private float hwTimerRight = 0;
     private float hwTimeCap = 2;
-    
+    public float sneakVal;
+    public float disguiseVal;
+    public float inventoryVal;
+    public float speedVal;
+
     
     public PlayerClass(string name)
     {
@@ -131,8 +135,11 @@ public class PlayerClass : MonoBehaviour
                         print("Successfully scavenged");
                         print(inventory);
                         inventory.Save();
-                        
+                        getUpgradeVals();
+                        print("disguiseval: " + disguiseVal);
+
                     }
+                    
                     newItem = true;
                     scavengeTimer = 0;
                     scavengeTimerBool = false;
@@ -164,6 +171,17 @@ public class PlayerClass : MonoBehaviour
         for (int i = 0; i < inventory.Container.Count; i++)
         {
             invenWeight = invenWeight + inventory.Container[i].getWeight();
+        }
+    }
+
+    public void getUpgradeVals()
+    {
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            sneakVal += inventory.Container[i].getsneakVal();
+            disguiseVal += inventory.Container[i].getdisguiseVal();
+            inventoryVal += inventory.Container[i].getinvenVal();
+            speedVal += inventory.Container[i].getsneakVal();
         }
     }
 
@@ -222,6 +240,7 @@ public class PlayerClass : MonoBehaviour
 
     public void Update()
     {
+        
         
         // Check states
         if (Input.GetKeyDown(KeyCode.G))
