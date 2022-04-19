@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savePath: /inventoryy.save
   Container: []
-  inventorySpace: 0
-  maxInven: 2
+  inventorySpace: 3
+  maxInven: 100
