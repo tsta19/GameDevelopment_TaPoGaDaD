@@ -254,7 +254,10 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                 }
@@ -484,6 +487,7 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_baslls = m_Player.FindAction("baslls", throwIfNotFound: true);
         m_Player_cck = m_Player.FindAction("cck", throwIfNotFound: true);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
 =======
@@ -494,6 +498,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
 =======
 =======
 >>>>>>> Stashed changes
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+=======
 <<<<<<< HEAD
 >>>>>>> Stashed changes
 =======
@@ -508,6 +515,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
 >>>>>>> main
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -734,7 +744,10 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         void OnHumanwalk(InputAction.CallbackContext context);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     }

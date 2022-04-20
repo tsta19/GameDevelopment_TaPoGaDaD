@@ -59,3 +59,9 @@ sysinfo.txt
 crashlytics-build.properties
 
 .idea/.idea.GameDevelopment_TaPoGaDaD/.idea/ 
+
+Assets/Scripts/Movement/ThirdPersonAction.cs
+
+Assets/Scripts/Movement/ThirdPersonAction.inputactions
+
+UserSettings/EditorUserSettings.asset
