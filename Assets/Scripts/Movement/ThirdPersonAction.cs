@@ -253,7 +253,10 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
                 }
             ]
         },
@@ -443,6 +446,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""action"": ""L_Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 }
             ]
@@ -482,9 +488,12 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
 =======
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 >>>>>>> Stashed changes
 =======
@@ -498,6 +507,9 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
 >>>>>>> main
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 
@@ -721,13 +733,19 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnHumanwalk(InputAction.CallbackContext context);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     }
     public interface IAdvancedWalkActions
     {
         void OnR_Move(InputAction.CallbackContext context);
         void OnL_Move(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }
