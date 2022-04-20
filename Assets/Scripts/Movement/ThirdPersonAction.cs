@@ -252,226 +252,11 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
                     ""action"": ""humanwalk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-                }
-            ]
-        },
-        {
-            ""name"": ""AdvancedWalk"",
-            ""id"": ""20f77af4-3875-428a-9447-5b3cfd415507"",
-            ""actions"": [
-                {
-                    ""name"": ""R_Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""7620e6f8-3ea8-4405-8bef-654090b3f826"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""L_Move"",
-                    ""type"": ""Button"",
-                    ""id"": ""e2778d38-dc47-4a4a-9a77-a9ba2e0f824f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""da83416e-4d41-46b7-a056-15c7661e03f5"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""d3345215-d0a1-43ec-97f6-4349006d591a"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""R_Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Modifier"",
-                    ""id"": ""4732b135-e3e6-4fe7-bf06-e3ea9784e042"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""R_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Binding"",
-                    ""id"": ""47c3b08e-56f3-4be7-8b67-ca9f80522274"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""R_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b878d74e-364c-4381-893e-e38a8f5f5766"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""L_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""43cecea1-19bd-40a0-96fe-b1bc679c641f"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f9c10627-cca3-4dba-8da5-1cce821f3352"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""19e6f664-3c92-4d67-a613-4b8793d39914"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""8c5bfc2b-8500-415c-a6df-96f8e8214a8f"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""5d92692b-f1f4-430c-b368-5943e89dfa39"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""3b809cf7-c9fb-428f-97b2-1fbf9aa4ea68"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""L_Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""0ddac61a-1580-4449-bddb-655b2374deff"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""L_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""718944aa-d356-4da9-8a11-013564f51a6a"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""L_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""14e0db79-4b3c-4079-aed7-5fd6ea573c17"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""L_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""cc510a12-41fb-4731-9ebb-f94cbd0c2b5d"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""L_Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 }
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""New control scheme"",
-            ""bindingGroup"": ""New control scheme"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<VirtualMouse>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
@@ -480,37 +265,10 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Scavenge = m_Player.FindAction("Scavenge", throwIfNotFound: true);
         m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
-<<<<<<< Updated upstream
         m_Player_baslls = m_Player.FindAction("baslls", throwIfNotFound: true);
         m_Player_cck = m_Player.FindAction("cck", throwIfNotFound: true);
-<<<<<<< Updated upstream
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
-        m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
-=======
-=======
->>>>>>> Stashed changes
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
-        // AdvancedWalk
-        m_AdvancedWalk = asset.FindActionMap("AdvancedWalk", throwIfNotFound: true);
-        m_AdvancedWalk_R_Move = m_AdvancedWalk.FindAction("R_Move", throwIfNotFound: true);
-        m_AdvancedWalk_L_Move = m_AdvancedWalk.FindAction("L_Move", throwIfNotFound: true);
-        m_AdvancedWalk_Move = m_AdvancedWalk.FindAction("Move", throwIfNotFound: true);
->>>>>>> Stashed changes
-=======
-        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
-        m_Player_humanwalk = m_Player.FindAction("humanwalk", throwIfNotFound: true);
->>>>>>> main
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
 
     public void Dispose()
@@ -663,64 +421,6 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // AdvancedWalk
-    private readonly InputActionMap m_AdvancedWalk;
-    private IAdvancedWalkActions m_AdvancedWalkActionsCallbackInterface;
-    private readonly InputAction m_AdvancedWalk_R_Move;
-    private readonly InputAction m_AdvancedWalk_L_Move;
-    private readonly InputAction m_AdvancedWalk_Move;
-    public struct AdvancedWalkActions
-    {
-        private @ThirdPersonAction m_Wrapper;
-        public AdvancedWalkActions(@ThirdPersonAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @R_Move => m_Wrapper.m_AdvancedWalk_R_Move;
-        public InputAction @L_Move => m_Wrapper.m_AdvancedWalk_L_Move;
-        public InputAction @Move => m_Wrapper.m_AdvancedWalk_Move;
-        public InputActionMap Get() { return m_Wrapper.m_AdvancedWalk; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(AdvancedWalkActions set) { return set.Get(); }
-        public void SetCallbacks(IAdvancedWalkActions instance)
-        {
-            if (m_Wrapper.m_AdvancedWalkActionsCallbackInterface != null)
-            {
-                @R_Move.started -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnR_Move;
-                @R_Move.performed -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnR_Move;
-                @R_Move.canceled -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnR_Move;
-                @L_Move.started -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnL_Move;
-                @L_Move.performed -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnL_Move;
-                @L_Move.canceled -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnL_Move;
-                @Move.started -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_AdvancedWalkActionsCallbackInterface.OnMove;
-            }
-            m_Wrapper.m_AdvancedWalkActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @R_Move.started += instance.OnR_Move;
-                @R_Move.performed += instance.OnR_Move;
-                @R_Move.canceled += instance.OnR_Move;
-                @L_Move.started += instance.OnL_Move;
-                @L_Move.performed += instance.OnL_Move;
-                @L_Move.canceled += instance.OnL_Move;
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-            }
-        }
-    }
-    public AdvancedWalkActions @AdvancedWalk => new AdvancedWalkActions(this);
-    private int m_NewcontrolschemeSchemeIndex = -1;
-    public InputControlScheme NewcontrolschemeScheme
-    {
-        get
-        {
-            if (m_NewcontrolschemeSchemeIndex == -1) m_NewcontrolschemeSchemeIndex = asset.FindControlSchemeIndex("New control scheme");
-            return asset.controlSchemes[m_NewcontrolschemeSchemeIndex];
-        }
-    }
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -732,20 +432,5 @@ public partial class @ThirdPersonAction : IInputActionCollection2, IDisposable
         void OnCck(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnHumanwalk(InputAction.CallbackContext context);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-    }
-    public interface IAdvancedWalkActions
-    {
-        void OnR_Move(InputAction.CallbackContext context);
-        void OnL_Move(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
 }
